@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@500&display=swap" rel="stylesheet">
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+
+
+</head>
+
+<body>
+
+    <div id="feedbackContainer">
+        <!-- Rating state start -->
+
+        <div id="star">
+            <img src="images/icon-star.svg" alt="icon star">
+        </div>
+
+        <h1>How did we do?</h1>
+
+        <p>
+            Please let us know how we did with your support request. All feedback is appreciated
+            to help us improve our offering!
+        </p>
+
+        <ul class="valueAvaliation">
+            <li class="0">1</li>
+            <li class="1">2</li>
+            <li class="2">3</li>
+            <li class="3">4</li>
+            <li class="4">5</li>
+        </ul>
+
+        <button id="sendFeedBack">Submit</button>
+        <!-- Rating state end -->
+    </div>
+
+
+    <script>
+
+        var $ul = document.querySelector('ul');
+
+        var arrLiTags = [...document.querySelectorAll('li')];
+        $ul.addEventListener('click', colocaClasseNoClicado);
+
+        function colocaClasseNoClicado(e) {
+
+            if (e.target.nodeName !== 'LI') { return ''; }
+
+            var todosQueTemMuda = [...$ul.getElementsByClassName('muda')]
+            if (e.target.classList.contains('muda') && todosQueTemMuda.at(-1) === e.target) {
+                arrLiTags.forEach((el) => { el.classList.remove('muda'); })
+            } else {
+                var removeClasse = arrLiTags.forEach((el) => el.classList.remove('muda'));
+
+                arrLiTags.forEach(function (el, i) {
+                    if (i <= arrLiTags.indexOf(e.target)) {
+                        el.classList.add('muda')
+                    };
+                })
+            }
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
